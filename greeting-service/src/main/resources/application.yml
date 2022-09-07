@@ -1,0 +1,26 @@
+# server.port -> Configurando a porta da aplicação
+# spring.application.name -> Nome da aplicação
+# spring.config.import -> Estamos configurando a URL de chamada para consumir os arquivos de configuração do config-server
+# spring.cloud.profile -> Estamos configurando qual tipo de arquivo iremos consumir do config-server
+# management.endpoints.web.exposure.include -> expoe todos os endpoint do Actuator
+
+server:
+  port: 8080
+spring:
+  application:
+    name: greeting-service
+  config:
+    import:
+    - optional:configserver:http://localhost:8888/
+  cloud:
+    config:
+      profile: qa      
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - '*'
+greeting-service:
+  greeting: "Olá"
+  default-value: "Mundo"

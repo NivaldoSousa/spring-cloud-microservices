@@ -1,0 +1,12 @@
+# server.port -> Configurando a porta da aplicação
+# spring.application.name -> Nome da aplicação
+# eureka.client.register-with-eureka e tambem eureka.client.fetch-registry serve para ele nao se auto registar, mas em produção essa anotação tem q ser retirada
+server:
+  port: 8761
+spring:
+  application:
+    name: naming-server
+eureka:
+  client:
+    register-with-eureka: false
+    fetch-registry: false

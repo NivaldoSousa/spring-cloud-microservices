@@ -1,0 +1,19 @@
+# Especificando a porta da aplicação
+server:
+  port: 8888
+
+# Especificando o nome da aplicação
+# cloud.config.server.git -> significa que o spring vai ler as config do repositorio do git
+spring:
+  application:
+    name: spring-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/NivaldoSousa/spring-cloud-microservices-config-server
+          #username: username  -> o login e senha é se caso seja um repositorio privado
+          #password: password
+          default-label: main
+          search-paths:
+          - 'greeting-service*'

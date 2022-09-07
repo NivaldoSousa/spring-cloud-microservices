@@ -1,0 +1,40 @@
+# spring.application.name -> Nome da aplicação
+# server.port -> Configurando a porta da aplicação
+# spring.datasource.driver-class-name -> Configurando o driver do banco de dados
+# spring.datasource.url-> Configurando a URL do banco de dados mais o nome da tabela
+# spring.jpa.hibernate.ddl-auto-> Gerar automaticamente o ddl, valor sendo update ele irá atualizar os schemas
+# spring.flyway.url-> Configurando a URL do banco de dados
+# spring.flyway.schemas-> Configurando o nome da tabela
+# spring.jackson.serialization.fail-on-empty-beans-> Para não serializar objeto nulo
+# eureka.client.service-url.defaultZone -> Ele é opcional, onde vc informa o endereço do seu servidor Eureka
+
+server:
+  port: 8100
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka
+spring:
+  application:
+    name: book-service
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/book_service?useTimezone=true&serverTimezone=UTC
+    username: root
+    password: admin
+  jackson:
+    serialization:
+      fail-on-empty-beans: false
+    default-property-inclusion: NON_NULL
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+  flyway:
+    url: jdbc:mysql://localhost:3306/
+    schemas: book_service
+    user: root
+    password: admin
